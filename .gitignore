@@ -1,0 +1,7 @@
+membot
+a.out
+launch.json
+settings.json
+*.o
+build/*
+*.json

@@ -4,4 +4,5 @@ launch.json
 settings.json
 *.o
 build/*
+Debug/*
 *.json

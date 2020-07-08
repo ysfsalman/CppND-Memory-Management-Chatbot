@@ -169,7 +169,7 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                             AddAllTokensToElement("KEYWORD", tokens, *edge);
 
                             // store reference in child node and parent node
-                            childNode->get()->AddEdgeToParentNode(edge.get());
+                            childNode->get()->AddEdgeToParentNode(edge.get());// why is it allowed?
                             parentNode->get()->AddEdgeToChildNode(std::move(edge));
                             
                         }

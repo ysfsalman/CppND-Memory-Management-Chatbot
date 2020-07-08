@@ -48,9 +48,11 @@ ChatBot::ChatBot(const ChatBot& source)
 {
     std::cout << "ChatBot Copy Constructor" << std::endl;
     _image    = new wxBitmap();
-    _chatLogic= source._chatLogic;;
-    _rootNode = source._rootNode;
     _image    = source._image;
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic= source._chatLogic;
+    
 }
 
 
@@ -62,21 +64,25 @@ ChatBot &ChatBot::operator=(ChatBot& source)
             return *this;
     delete _image;
     _image      = new wxBitmap(); // may wrong
-    _chatLogic = source._chatLogic;
-    *_rootNode  = *source._rootNode;
-    *_image     = *source._image;    
+    _image    = source._image;
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic= source._chatLogic;    
     return *this;
 }
 
 ChatBot::ChatBot(ChatBot&& source)
 {  
     std::cout << "ChatBot Moving Constructor" << std::endl;
-    _chatLogic= source._chatLogic;;
-    _rootNode = source._rootNode;
     _image    = source._image;
-    source._chatLogic   = nullptr;
-    source._rootNode    = nullptr;
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic= source._chatLogic; 
+    
     source._image       = NULL;
+    source._currentNode = nullptr;
+    source._rootNode    = nullptr;
+    source._chatLogic   = nullptr;
 }
 
 ChatBot &ChatBot::operator=(ChatBot&& source)
@@ -87,12 +93,14 @@ ChatBot &ChatBot::operator=(ChatBot&& source)
             return *this;
     delete _image;
     _image      = new wxBitmap();
-    _chatLogic = source._chatLogic;
-    *_rootNode  = *source._rootNode;
-    *_image     = *source._image;
-    source._chatLogic   = nullptr;
+    _image    = source._image;
+    _currentNode = source._currentNode;
+    _rootNode = source._rootNode;
+    _chatLogic= source._chatLogic;     
+    source._image       = NULL;
+    source._currentNode = nullptr;
     source._rootNode    = nullptr;
-    source._image       = NULL;    
+    source._chatLogic   = nullptr; 
     return *this;
 }
 

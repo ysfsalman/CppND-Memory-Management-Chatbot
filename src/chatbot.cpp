@@ -38,7 +38,7 @@ ChatBot::~ChatBot()
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
     {
         delete _image;
-        _image = NULL;
+        _image = NULL; // why _image need to be assigned with NULL after deletion
     }
 }
 
@@ -61,8 +61,8 @@ ChatBot &ChatBot::operator=(ChatBot& source)
     if (this == &source)
             return *this;
     delete _image;
-    _image      = new wxBitmap();
-    *_chatLogic = *source._chatLogic;
+    _image      = new wxBitmap(); // may wrong
+    _chatLogic = source._chatLogic;
     *_rootNode  = *source._rootNode;
     *_image     = *source._image;    
     return *this;
@@ -76,7 +76,7 @@ ChatBot::ChatBot(ChatBot&& source)
     _image    = source._image;
     source._chatLogic   = nullptr;
     source._rootNode    = nullptr;
-    source._image       = nullptr;
+    source._image       = NULL;
 }
 
 ChatBot &ChatBot::operator=(ChatBot&& source)
@@ -87,12 +87,12 @@ ChatBot &ChatBot::operator=(ChatBot&& source)
             return *this;
     delete _image;
     _image      = new wxBitmap();
-    *_chatLogic = *source._chatLogic;
+    _chatLogic = source._chatLogic;
     *_rootNode  = *source._rootNode;
     *_image     = *source._image;
     source._chatLogic   = nullptr;
     source._rootNode    = nullptr;
-    source._image       = nullptr;    
+    source._image       = NULL;    
     return *this;
 }
 

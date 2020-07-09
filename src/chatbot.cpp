@@ -51,7 +51,8 @@ ChatBot::ChatBot(const ChatBot& source)
     _image    = source._image;
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
-    _chatLogic= source._chatLogic;
+    _chatLogic= source._chatLogic; 
+    _chatLogic->SetChatbotHandle(this);
     
 }
 
@@ -68,17 +69,18 @@ ChatBot &ChatBot::operator=(ChatBot& source)
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic= source._chatLogic;    
+    _chatLogic->SetChatbotHandle(this);
     return *this;
 }
 
 ChatBot::ChatBot(ChatBot&& source)
 {  
-    std::cout << "ChatBot Moving Constructor" << std::endl;
+    std::cout << "ChatBot Move Constructor" << std::endl;
     _image    = source._image;
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
     _chatLogic= source._chatLogic; 
-    
+    _chatLogic->SetChatbotHandle(this);
     source._image       = NULL;
     source._currentNode = nullptr;
     source._rootNode    = nullptr;
@@ -87,7 +89,7 @@ ChatBot::ChatBot(ChatBot&& source)
 
 ChatBot &ChatBot::operator=(ChatBot&& source)
 {
-    std::cout << "ChatBot Move Assignment" << std::endl;
+    std::cout << "ChatBot Move Assignment Operator" << std::endl;
     // avoid self-copy
     if (this == &source)
             return *this;
@@ -96,7 +98,8 @@ ChatBot &ChatBot::operator=(ChatBot&& source)
     _image    = source._image;
     _currentNode = source._currentNode;
     _rootNode = source._rootNode;
-    _chatLogic= source._chatLogic;     
+    _chatLogic= source._chatLogic; 
+    _chatLogic->SetChatbotHandle(this);     
     source._image       = NULL;
     source._currentNode = nullptr;
     source._rootNode    = nullptr;

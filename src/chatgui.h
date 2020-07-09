@@ -13,13 +13,8 @@ private:
     // control elements
     wxBoxSizer *_dialogSizer;
     wxBitmap _image;
-
-    //// STUDENT CODE
-    //// make exclusive ownership of _chatLogic to ChatBotPanelDialog
+    // make exclusive ownership of _chatLogic to ChatBotPanelDialog
     std::unique_ptr<ChatLogic> _chatLogic;
-    
-    ////
-    //// EOF STUDENT CODE
 
 public:
     // constructor / destructor

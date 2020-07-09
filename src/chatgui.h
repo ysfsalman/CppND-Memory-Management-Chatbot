@@ -7,7 +7,7 @@
 class ChatLogic; // forward declaration
 
 // middle part of the window containing the dialog between user and chatbot
-class ChatBotPanelDialog : public wxScrolledWindow
+class  ChatBotPanelDialog : public wxScrolledWindow
 {
 private:
     // control elements
@@ -15,9 +15,8 @@ private:
     wxBitmap _image;
 
     //// STUDENT CODE
-    ////
+    //// make exclusive ownership of _chatLogic to ChatBotPanelDialog
     std::unique_ptr<ChatLogic> _chatLogic;
-    //ChatLogic *_chatLogic;
     
     ////
     //// EOF STUDENT CODE
